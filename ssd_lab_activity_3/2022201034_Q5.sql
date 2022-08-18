@@ -1,0 +1,1 @@
+select dp.Essn as "Manager SSN",d.Dnumber as "Dept Id",COUNT(*) as "Number of dependents" from DEPENDENT as dp JOIN DEPARTMENT as d ON dp.Essn=d.Mgr_ssn where Essn IN(select Mgr_ssn from DEPARTMENT where Dnumber IN (select Dnumber from DEPT_LOCATIONS group by Dnumber having (COUNT(*)>2))) group by dp.Essn,d.Dnumber;

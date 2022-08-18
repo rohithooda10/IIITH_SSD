@@ -1,0 +1,1 @@
+select CONCAT(e.Fname," ",e.Lname) as "Full Name",e.Ssn as "SSN",d.Dnumber as "Dept Id",d.Dname as "Dept Name" from EMPLOYEE as e JOIN DEPARTMENT as d on e.Ssn=d.Mgr_ssn where Ssn in (select Mgr_Ssn from DEPARTMENT where Dnumber in (select Dno from EMPLOYEE where Ssn in (select Essn from WORKS_ON group by Essn having SUM(Hours)<40) group by Dno));

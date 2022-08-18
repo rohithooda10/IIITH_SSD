@@ -1,0 +1,1 @@
+select d.Dnumber "Dept Id",d.Dname as "Dept name",Count(*) as "Number of locations" from DEPT_LOCATIONS as dl JOIN DEPARTMENT as d on dl.Dnumber=d.Dnumber where dl.Dnumber in (select Dnumber from DEPARTMENT where Mgr_ssn in (select Ssn from EMPLOYEE where Ssn IN (select Essn from DEPENDENT where Sex="F" group by Essn having Count(*)>=2))) group by d.Dname,d.Dnumber; 
