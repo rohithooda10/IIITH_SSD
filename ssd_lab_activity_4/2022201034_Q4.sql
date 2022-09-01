@@ -1,0 +1,21 @@
+DELIMITER $$
+CREATE PROCEDURE CUSTOMER_DB.getCust3()
+BEGIN
+DECLARE gotdone INTEGER default 0;
+DECLARE name,city,country VARCHAR(1000);
+DECLARE grd decimal(10,0);
+DECLARE mycursor CURSOR FOR
+ SELECT CUST_NAME,CUST_CITY,CUST_COUNTRY,GRADE FROM customer WHERE AGENT_CODE LIKE 'A00%';
+ DECLARE CONTINUE HANDLER FOR NOT FOUND SET gotdone=1;
+ OPEN mycursor;
+ looper : LOOP
+FETCH mycursor INTO name,city,country,grd;
+IF gotdone=1 THEN LEAVE looper;
+END IF;
+SELECT name as NAME,city as CITY,country as COUNTRY,grd as GRADE;
+END LOOP;
+CLOSE mycursor;
+END$$
+DELIMITER ;
+
+call CUSTOMER_DB.getCust3;

@@ -1,0 +1,8 @@
+DELIMITER $$
+CREATE PROCEDURE CUSTOMER_DB.getCust(IN location varchar(1000) )
+BEGIN
+ SELECT CUST_NAME FROM customer WHERE CUST_CITY = location;
+END$$
+DELIMITER ;
+
+call CUSTOMER_DB.getCust('Bangalore');
