@@ -1,0 +1,38 @@
+<html>
+<title>
+	Team Form
+</title>
+<head>
+	<link rel="stylesheet" href="mystyle.css">
+	<script type="text/javascript" src="myscript.js"></script>
+</head>
+	<body>
+		<h2>Team Form</h2>
+		<form name="teamform" onsubmit="return validateForm()" method="POST">
+			Manager Name: <input type="text" id="managername" required><br>
+			Group Email:<input type="email" id="grpemail" required><br>
+			Server Username:<input type="text" id="serverusername" oninput="validateUsername()" required><p id="invaliduser"></p><br>
+			Server Password:<input type="password" id="serverpass" required><br>
+			ConfirmPassword:<input type="password" id="confirmpass" oninput="confirmPassword()" required><p id="invalidpass"></p><br>
+			<label for="teamlead">Team Lead:</label> 
+			<select name="teamlead" id="teamlead" required>
+				<option value="none" selected disabled hidden>Select an Option</option>
+				<option value="Virat">Virat</option>
+				<option value="Rohit">Rohit</option>
+				<option value="Rahul">Rahul</option>
+				<option value="Ganguly">Ganguly</option>
+			</select><br>
+			<div id="container">
+			<div id="left">
+			<p id="1"  draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)">Ponting</p>
+			<p id="2" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" >Dravid</p>
+	     	<p id="3" draggable="true" ondragstart="dragStart(event)" ondragover="allowDrop(event)" >Lara</p>
+			</div>
+			<div id="right">
+			<p  ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 100px;"></p>
+			</div>
+		</div>
+			<input type="submit" name="submit">
+		</form>
+	</body>
+</html>
